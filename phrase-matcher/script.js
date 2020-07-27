@@ -62,7 +62,10 @@ function testSpeech() {
     var words = speechResult.split(" ");
     var wordcount = words.length;
 
-    var WPM = wordcount / (((speechendtime - speechstarttime)/1000.0) * 60.0 );
+    console.log('Wordcount: ' + wordcount);
+    console.log('Elapsed Time: ' + (speechendtime - speechstarttime));
+
+    var WPM = wordcount / (speechendtime - speechstarttime);
 
     console.log('WPM: '+ WPM);
     diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
