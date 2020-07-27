@@ -13,6 +13,8 @@ var phrases = [
   'she sells seashells on the seashore'
 ];
 
+var speechstarttime, speechendtime;
+
 var phrasePara = document.querySelector('.phrase');
 var resultPara = document.querySelector('.result');
 var diagnosticPara = document.querySelector('.output');
@@ -57,7 +59,12 @@ function testSpeech() {
     // The second [0] returns the SpeechRecognitionAlternative at position 0.
     // We then return the transcript property of the SpeechRecognitionAlternative object 
     var speechResult = event.results[0][0].transcript.toLowerCase();
-    diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
+    var words = speechResult.split(" ");
+    var wordcount = words.length;
+
+    var WPM = wordcount / (((speechendtime - speechstarttime)/1000) * 60 );
+
+    diagnosticPara.textContent = 'Speech received: ' + speechResult + '.' + 'WPM: '+ WPM;
     if(speechResult === phrase) {
       resultPara.textContent = 'I heard the correct phrase!';
       resultPara.style.background = 'lime';
@@ -108,11 +115,13 @@ function testSpeech() {
   
   recognition.onsoundend = function(event) {
       //Fired when any sound — recognisable speech or not — has stopped being detected.
+      speechendtime = Date.now;
       console.log('SpeechRecognition.onsoundend');
   }
   
   recognition.onspeechstart = function (event) {
       //Fired when sound that is recognised by the speech recognition service as speech has been detected.
+      speechstarttime = Date.now;
       console.log('SpeechRecognition.onspeechstart');
   }
   recognition.onstart = function(event) {
