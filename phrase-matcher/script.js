@@ -62,11 +62,11 @@ function testSpeech() {
     var words = speechResult.split(" ");
     var wordcount = words.length;
 
-    var WPM = wordcount / (((speechendtime - speechstarttime)/1000) * 60 );
+    var WPM = wordcount / (((speechendtime - speechstarttime)/1000.0) * 60.0 );
 
-    console.log(`WPM: ${WPM}`);
+    console.log('WPM: '+ WPM);
 
-    diagnosticPara.textContent = 'Speech received: ' + speechResult + '.' + 'WPM: '+ WPM;
+    diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
     if(speechResult === phrase) {
       resultPara.textContent = 'I heard the correct phrase!';
       resultPara.style.background = 'lime';
