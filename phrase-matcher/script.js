@@ -63,7 +63,7 @@ function testSpeech() {
     var wordcount = words.length;
 
     console.log('WordCount: ' + wordcount);
-    console.log('Start Time: ' + speechstarttime);
+    console.log('Starting Time: ' + speechstarttime);
     console.log('End Time: ' + speechendtime);
 
     var WPM = wordcount / (speechendtime - speechstarttime);
