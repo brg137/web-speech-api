@@ -65,7 +65,6 @@ function testSpeech() {
     var WPM = wordcount / (((speechendtime - speechstarttime)/1000.0) * 60.0 );
 
     console.log('WPM: '+ WPM);
-
     diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
     if(speechResult === phrase) {
       resultPara.textContent = 'I heard the correct phrase!';
