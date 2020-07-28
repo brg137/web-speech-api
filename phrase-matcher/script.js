@@ -28,10 +28,9 @@ function randomPhrase() {
   return number;
 }
 
-function mousePressed() {
-  
-  if (getAudioContext().state !== 'running') {
-    getAudioContext().resume();
+function touchStarted() {
+  if (audioContext.state !== 'running') {
+    audioContext.resume();
   }
 }
 
