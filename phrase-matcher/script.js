@@ -66,7 +66,7 @@ function testSpeech() {
     console.log('Starting Time: ' + speechstarttime);
     console.log('End Time: ' + speechendtime);
 
-    var WPM = wordcount / (speechendtime - speechstarttime);
+    var WPM = wordcount / (((speechendtime - speechstarttime) / 1000.0 ) * 60.0 );
 
     console.log('WPM: '+ WPM);
     diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
