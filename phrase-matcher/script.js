@@ -3,6 +3,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 let audioContext; let mic; let pitch;
+var frequencyList = [];
 
 var phrases = [
   'I love to sing because it\'s fun',
@@ -53,7 +54,7 @@ function testSpeech() {
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
   recognition.grammars = speechRecognitionList;
-  recognition.lang = 'de-DE';
+  recognition.lang = 'en-US';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
@@ -162,9 +163,17 @@ function modelLoaded() {
 function getPitch() {
   pitch.getPitch(function(err, frequency) {
     if (frequency) {
-      select('#result2').html(frequency);
+      if(frequencyList ==null) frequencyList = [];
+      frequencyList.push(frequency);
+      var meanFrequency = 0;
+      frequencyList.forEach(element => {
+        meanFrequency += frequency;
+      });
+      meanFrequency /= frequencyList.length;
+      select('#result2').html(meanFrequency);
     } else {
       select('#result2').html('No pitch detected');
+      frequencyList = null;
     }
     getPitch();
   })
