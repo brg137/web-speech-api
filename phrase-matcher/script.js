@@ -30,6 +30,9 @@ function randomPhrase() {
 
 function mousePressed() {
   setup();
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
+  }
 }
 
 function testSpeech() {
