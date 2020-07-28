@@ -120,13 +120,13 @@ function testSpeech() {
   
   recognition.onsoundend = function(event) {
       //Fired when any sound — recognisable speech or not — has stopped being detected.
-      speechendtime = Date.now;
+      speechendtime = Date.now();
       console.log('SpeechRecognition.onsoundend');
   }
   
   recognition.onspeechstart = function (event) {
       //Fired when sound that is recognised by the speech recognition service as speech has been detected.
-      speechstarttime = Date.now;
+      speechstarttime = Date.now();
       console.log('SpeechRecognition.onspeechstart');
   }
   recognition.onstart = function(event) {
