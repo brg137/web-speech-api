@@ -55,6 +55,8 @@ function testSpeech() {
 
   recognition.start();
 
+  setup();
+
   recognition.onresult = function(event) {
     // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
     // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
