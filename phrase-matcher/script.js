@@ -29,7 +29,7 @@ function randomPhrase() {
 }
 
 function mousePressed() {
-  setup();
+  
   if (getAudioContext().state !== 'running') {
     getAudioContext().resume();
   }
@@ -46,6 +46,8 @@ function testSpeech() {
   resultPara.textContent = 'Right or wrong?';
   resultPara.style.background = 'rgba(0,0,0,0.2)';
   diagnosticPara.textContent = '...diagnostic messages';
+
+  setup();
 
   var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
   var recognition = new SpeechRecognition();
