@@ -2,6 +2,8 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
+let audioContext; let mic; let pitch;
+
 var phrases = [
   'I love to sing because it\'s fun',
   'where are you going',
@@ -133,6 +135,30 @@ function testSpeech() {
       //Fired when the speech recognition service has begun listening to incoming audio with intent to recognize grammars associated with the current SpeechRecognition.
       console.log('SpeechRecognition.onstart');
   }
+}
+
+function setup() {
+  noCanvas();
+  audioContext = getAudioContext();
+  mic = new p5.AudioIn();
+  mic.start(startPitch);
+}
+function startPitch() {
+  pitch = ml5.pitchDetection('./model/', audioContext , mic.stream, modelLoaded);
+}
+function modelLoaded() {
+  select('#status').html('Model Loaded');
+  getPitch();
+}
+function getPitch() {
+  pitch.getPitch(function(err, frequency) {
+    if (frequency) {
+      select('#result2').html(frequency);
+    } else {
+      select('#result2').html('No pitch detected');
+    }
+    getPitch();
+  })
 }
 
 testBtn.addEventListener('click', testSpeech);
