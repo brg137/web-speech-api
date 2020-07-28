@@ -143,7 +143,7 @@ function testSpeech() {
 
 function setup() {
   console.log('Setting up PitchDetector');
-  noCanvas();
+  //noCanvas();
   audioContext = getAudioContext();
   mic = new p5.AudioIn();
   mic.start(startPitch);
