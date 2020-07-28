@@ -28,6 +28,10 @@ function randomPhrase() {
   return number;
 }
 
+function mousePressed() {
+  setup();
+}
+
 function testSpeech() {
   testBtn.disabled = true;
   testBtn.textContent = 'Test in progress';
