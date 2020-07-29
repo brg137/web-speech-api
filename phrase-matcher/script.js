@@ -36,6 +36,7 @@ function touchStarted() {
 }
 
 function testSpeech() {
+  frequencyList = null;
   testBtn.disabled = true;
   testBtn.textContent = 'Test in progress';
 
@@ -174,8 +175,8 @@ function getPitch() {
       meanFrequency = Math.floor(meanFrequency);
       select('#result2').html('F0:' + meanFrequency + ' based on ' + frequencyList.length + ' samples.');
     } else {
-      select('#result2').html('No pitch detected');
-      frequencyList = null;
+      //select('#result2').html('No pitch detected');
+      //frequencyList = null;
     }
     getPitch();
   })
