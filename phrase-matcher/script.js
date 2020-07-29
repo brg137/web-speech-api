@@ -168,7 +168,7 @@ function getPitch() {
       console.log('FreqCount: '+ frequencyList-length);
       var meanFrequency = 0;
       frequencyList.forEach(element => {
-        meanFrequency += frequency;
+        meanFrequency += element;
       });
       meanFrequency /= frequencyList.length;
       meanFrequency = Math.floor(meanFrequency);
