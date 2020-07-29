@@ -163,13 +163,15 @@ function modelLoaded() {
 function getPitch() {
   pitch.getPitch(function(err, frequency) {
     if (frequency) {
-      if(frequencyList ==null) frequencyList = [];
+      if(frequencyList == null) frequencyList = [];
       frequencyList.push(frequency);
+      console.log('FreqCount: '+ frequencyList-length);
       var meanFrequency = 0;
       frequencyList.forEach(element => {
         meanFrequency += frequency;
       });
       meanFrequency /= frequencyList.length;
+      meanFrequency = Math.floor(meanFrequency);
       select('#result2').html(meanFrequency);
     } else {
       select('#result2').html('No pitch detected');
