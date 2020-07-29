@@ -172,7 +172,7 @@ function getPitch() {
       });
       meanFrequency /= frequencyList.length;
       meanFrequency = Math.floor(meanFrequency);
-      select('#result2').html(meanFrequency);
+      select('#result2').html('F0:' + meanFrequency + ' based on ' + frequencyList.length + ' samples.');
     } else {
       select('#result2').html('No pitch detected');
       frequencyList = null;
